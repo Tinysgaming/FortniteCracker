@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortnite Cracker Purchase</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        header img {
+            max-width: 150px;
+            height: auto;
+            margin-left: 10px;
+        }
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #555;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #777;
+        }
+        nav a.disabled {
+            cursor: not-allowed;
+            background-color: #333;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .input-group {
+            margin: 20px 0;
+        }
+        .input-group input {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+        }
+        .input-group button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #555;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .input-group button:hover {
+            background-color: #777;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .main-button {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #555;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .main-button:hover {
+            background-color: #777;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://fortnitefontgenerator.com/img.php?textcolor=FFFFFF&text=Fortnite+Cracker&fontsize=55" alt="Fortnite Cracker Logo">
+        <nav>
+            <a href="#" id="activateKeyTab" onclick="showTab('keyContainer')">Activate Key</a>
+            <a href="#" id="signUpTab" onclick="showTab('signUpContainer')">Sign Up</a>
+            <a href="#" id="signInTab" onclick="showTab('signInContainer')">Sign In</a>
+            <a href="#" class="disabled">Download</a>
+        </nav>
+    </header>
+    <div class="container" id="startContainer">
+        <h1><b>GET READY TO BE BETTER</b></h1>
+        <a href="#" class="main-button" onclick="showTab('keyContainer')">Activate Key</a>
+    </div>
+    <div class="container" id="keyContainer" style="display: none;">
+        <h2>Activate Key</h2>
+        <div class="input-group">
+            <input type="text" id="keyInput" placeholder="Enter your key">
+            <button onclick="checkKey()">Activate</button>
+        </div>
+        <div id="keyMessage"></div>
+    </div>
+    <div class="container" id="signUpContainer" style="display: none;">
+        <h2>Sign Up</h2>
+        <div class="input-group">
+            <input type="text" id="signUpUsername" placeholder="Enter username">
+            <button onclick="checkSignUpUsername()">Continue</button>
+        </div>
+        <div id="signUpMessage"></div>
+        <div class="input-group" id="passwordInputGroup" style="display: none;">
+            <input type="password" id="signUpPassword" placeholder="Enter password">
+            <button onclick="completeSignUp()">Sign Up</button>
+        </div>
+    </div>
+    <div class="container" id="signInContainer" style="display: none;">
+        <h2>Sign In</h2>
+        <div class="input-group">
+            <input type="text" id="signInUsername" placeholder="Enter username">
+        </div>
+        <div class="input-group">
+            <input type="password" id="signInPassword" placeholder="Enter password">
+            <button onclick="signIn()">Sign In</button>
+        </div>
+        <div id="signInMessage"></div>
+    </div>
+    <div id="message"></div>
+    <script>
+        const regularKeys = [
+            "ZFL3DKUDG1IV",
+            "GG73V520OMP4",
+            "BSV7ZJOB4FYQ",
+            "0HG0MEG2UWM2",
+            "NMDG7HTXPJY4"
+        ];
+        const specialKeys = [
+            "YDFJP0Y6YBHA",
+            "0JG8HQXTG0UW",
+            "R8TMLMV05BDE",
+            "OXCRUBSL75IU",
+            "JQZL6J09AJLL"
+        ];
+        const usedKeys = [];
+        const users = [
+            { username: 'user1', password: 'password1', activeKey: null },
+            { username: 'user2', password: 'password2', activeKey: null }
+        ];
+        let loggedIn = false; // Track login status
+        let currentUser = null; // Track the currently logged-in user
+
+        function showTab(tabId) {
+            document.getElementById("startContainer").style.display = "none";
+            document.getElementById("keyContainer").style.display = "none";
+            document.getElementById("signUpContainer").style.display = "none";
+            document.getElementById("signInContainer").style.display = "none";
+
+            document.getElementById(tabId).style.display = "block";
+        }
+
+        function checkKey() {
+            if (!loggedIn) {
+                alert("You must be logged in to activate a key.");
+                return;
+            }
+
+            const keyInput = document.getElementById("keyInput").value;
+            const message = document.getElementById("keyMessage");
+
+            if (currentUser.activeKey) {
+                message.textContent = "This account has an active key. Please wait for the trial to end.";
+                message.style.color = "orange";
+                return;
+            }
+
+            if (usedKeys.includes(keyInput)) {
+                message.textContent = "Code Is Taken/In Use";
+                message.style.color = "orange";
+            } else if (regularKeys.includes(keyInput)) {
+                usedKeys.push(keyInput);
+                currentUser.activeKey = keyInput; // Assign the key to the user
+                message.textContent = "Key Activated! 10 Day Trial";
+                message.style.color = "green";
+            } else if (specialKeys.includes(keyInput)) {
+                usedKeys.push(keyInput);
+                currentUser.activeKey = keyInput; // Assign the key to the user
+                message.textContent = "Key Activated! Full Month Trial!";
+                message.style.color = "gold";
+            } else {
+                message.textContent = "Key Invalid/Expired";
+                message.style.color = "red";
+            }
+        }
+
+        function checkSignUpUsername() {
+            const username = document.getElementById("signUpUsername").value;
+            const message = document.getElementById("signUpMessage");
+            const inappropriateWords = ["badword1", "badword2"]; // Add more inappropriate words
+
+            if (username.length < 8) {
+                message.textContent = "Username must be at least 8 characters long.";
+                message.style.color = "red";
+            } else if (inappropriateWords.some(word => username.includes(word))) {
+                message.textContent = "Your name is not allowed on the site.";
+                message.style.color = "red";
+            } else if (users.some(user => user.username === username)) {
+                message.textContent = "Username taken!";
+                message.style.color = "red";
+            } else {
+                message.textContent = "Username available!";
+                message.style.color = "green";
+                document.getElementById("passwordInputGroup").style.display = "block";
+            }
+        }
+
+        function completeSignUp() {
+            const username = document.getElementById("signUpUsername").value;
+            const password = document.getElementById("signUpPassword").value;
+            const message = document.getElementById("signUpMessage");
+
+            if (password.length < 8) {
+                message.textContent = "Password must be at least 8 characters long.";
+                message.style.color = "red";
+            } else {
+                users.push({ username: username, password: password, activeKey: null });
+                message.textContent = "Sign up successful! You can now sign in.";
+                message.style.color = "green";
+                document.getElementById("passwordInputGroup").style.display = "none";
+                document.getElementById("signUpUsername").value = "";
+                document.getElementById("signUpPassword").value = "";
+            }
+        }
+
+        function signIn() {
+            const username = document.getElementById("signInUsername").value;
+            const password = document.getElementById("signInPassword").value;
+            const message = document.getElementById("signInMessage");
+
+            currentUser = users.find(user => user.username === username && user.password === password);
+            if (currentUser) {
+                loggedIn = true;
+                message.textContent = "Sign in successful!";
+                message.style.color = "green";
+                showTab('keyContainer');
+            } else {
+                message.textContent = "Invalid username or password.";
+                message.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
